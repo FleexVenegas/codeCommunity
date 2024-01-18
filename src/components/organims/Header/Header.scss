@@ -1,0 +1,124 @@
+$border-colors: red, orange, yellow, green, blue, indigo, violet;
+
+@keyframes border-color-cycle {
+
+  0%,
+  100% {
+    border-color: nth($border-colors, 1);
+  }
+
+  14.2857% {
+    border-color: nth($border-colors, 2);
+  }
+
+  28.5714% {
+    border-color: nth($border-colors, 3);
+  }
+
+  42.8571% {
+    border-color: nth($border-colors, 4);
+  }
+
+  57.1429% {
+    border-color: nth($border-colors, 5);
+  }
+
+  71.4286% {
+    border-color: nth($border-colors, 6);
+  }
+
+  85.7143%,
+  100% {
+    border-color: nth($border-colors, 7);
+  }
+}
+
+
+.Header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  background: #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+
+  .h-left {}
+
+  .h-right {
+    display: flex;
+    gap: 80px;
+    align-items: center;
+
+
+    .cnt_btnLogins {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+
+      .btnNav {
+        width: 120px;
+        height: 40px;
+        background: none;
+        border-radius: 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #000;
+        font-weight: bold;
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        position: relative;
+        transition: 0.5s;
+        overflow: hidden;
+        z-index: 1;
+
+        &.btn-login{
+          &::after{
+            z-index: -1;
+            content: "";
+            position: absolute;
+            top: 0;
+            right: -125px;
+            width: 120px;
+            height: 40px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(16deg, #fff 3%, #009fe3 47%, #162B4E 100%);
+            transition: 0.5s;
+          }
+
+        }
+
+        &.btn-sign{
+          &::after{
+            z-index: -1;
+            content: "";
+            position: absolute;
+            top: -3px;
+            right: -125px;
+            width: 120px;
+            height: 40px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(35deg, #fff 3%, #00e37a 47%, #2e4e16 100%);
+            transition: 0.5s;
+          }
+        }
+
+
+          &:hover::after{
+            // z-index: -1;
+            transition: 0.5s;
+            right: 0px;
+            color: #fff;
+          }
+
+          &:hover{
+            color: #fff;
+          }
+      }
+
+    }
+  }
+
+}
