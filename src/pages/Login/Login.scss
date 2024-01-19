@@ -1,0 +1,105 @@
+.Login{
+    height: calc(100vh - 110px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    .l-form{
+        width: 519px;
+        height: 491px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        background: rgba(255, 255, 255, 0.1);
+        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+        // border-radius: 10px;
+        padding: 25px;
+
+        .l-cnt-img{
+            margin-bottom: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .l-image{
+                opacity: 0.8;
+                filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(143deg) brightness(104%) contrast(101%);
+            }
+
+            .l-title{
+                font-size: 25px;
+                font-weight: bold;
+                position: relative;
+                color: rgba(255, 255, 255, 0.7);
+    
+                &::after{
+                    content: "";
+                    width: 80px;
+                    position: absolute;
+                    top: calc(50%);
+                    right: -87px;
+                    border-bottom: 2px solid rgba(255, 255, 255, 0.7);    
+                }
+    
+                &::before{
+                    content: "";
+                    width: 80px;
+                    position: absolute;
+                    top: calc(50%);
+                    left: -87px;
+                    border-bottom: 2px solid rgba(255, 255, 255, 0.7);    
+                }
+            }
+        }
+
+        .cntInput{
+            width: 300px;
+
+            input::placeholder{
+                color: rgba(255, 255, 255, 0.5);
+            }
+        }
+
+        .cnt-mid{
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            align-items: flex-end;
+
+            .forgot-password{
+                font-size: 12px;
+                color: rgba(255, 255, 255, 0.7);
+                font-weight: bold;
+
+                &:hover{
+                    text-decoration: underline;
+                }
+            }   
+        }
+
+        .btn-submit{
+            margin-top: 30px;
+            width: 300px;
+            height: 40px;
+            cursor: pointer;
+            border: none;
+            outline: none;
+            transition: 0.5s;
+            font-weight: bold;
+            letter-spacing: 1px;
+            user-select: none;
+            
+
+            &:hover{
+                letter-spacing: 5px;
+                background: rgba(255, 255, 255, 0.7);
+            }
+        }
+
+    }
+}

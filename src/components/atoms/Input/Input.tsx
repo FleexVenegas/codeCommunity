@@ -1,26 +1,21 @@
-import React from 'react'
-
-
+//Styles
+import { ChangeEventHandler } from "react";
 import "./Input.scss"
 
-//Assets
-import Lupa from './imagesInput/lupa.png'
-
-
 interface InputProps{
-  title?: string
-  placeholder?: string
-  className?: string
+    className?: string
+    name?: string
+    id?: string
+    text?: string
+    placeholder?: string
+    onChange?: ChangeEventHandler<HTMLInputElement>;
 }
 
-
-const Input = ({title, placeholder, className}: InputProps) => {
+const Input = ({className, text, placeholder, onChange, name, id}: InputProps) => {
   return (
-    <div className={`cntInput ${className}`}>
-        {title && <p>{title}</p>}
-        <input type="text" className={`Input`} placeholder={placeholder} />
-
-        <img src={Lupa} alt="" />
+    <div className={`cnt-Input ${className}`}>
+        {text && <label className='i-txt'>{text}</label>}
+        <input type="text" name={name} id={id} className={`input`} placeholder={placeholder} onChange={onChange}/>
     </div>
   )
 }

@@ -2,13 +2,12 @@ import React from 'react'
 
 import "./Header.scss"
 import { NavLink, useLocation } from 'react-router-dom'
-import Input from '../../atoms/Input/Input'
+import InputH from "../../atoms/InputH/InputH"
 
 const Header = () => {
 
     const use_location = useLocation()
-    const userStart: boolean = use_location.pathname.startsWith("/user")
-    
+    const userStart: boolean = use_location.pathname.startsWith("/user/")
 
   return (
     <header className='Header_ Header'>
@@ -16,17 +15,20 @@ const Header = () => {
             -commu
         </div>
         <div className='h-right'>
+            { !userStart &&
+                <>
+                    <InputH placeholder='Search' />
 
-            <Input placeholder='Search' />
-
-            <div className='cnt_btnLogins'>
-                <NavLink to={"/user/login"} className={"btnNav btn-login"}>
-                    Log in
-                </NavLink>
-                <NavLink to={"#"} className={"btnNav btn-sign"}>
-                    Sign up
-                </NavLink>
-            </div>
+                    <div className='cnt_btnLogins'>
+                        <NavLink to={"/user/login"} className={"btnNav btn-login"}>
+                            Log in
+                        </NavLink>
+                        <NavLink to={"#"} className={"btnNav btn-sign"}>
+                            Sign up
+                        </NavLink>
+                    </div>
+                </>
+            }
 
         </div>
     </header>

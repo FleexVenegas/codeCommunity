@@ -1,39 +1,3 @@
-$border-colors: red, orange, yellow, green, blue, indigo, violet;
-
-@keyframes border-color-cycle {
-
-  0%,
-  100% {
-    border-color: nth($border-colors, 1);
-  }
-
-  14.2857% {
-    border-color: nth($border-colors, 2);
-  }
-
-  28.5714% {
-    border-color: nth($border-colors, 3);
-  }
-
-  42.8571% {
-    border-color: nth($border-colors, 4);
-  }
-
-  57.1429% {
-    border-color: nth($border-colors, 5);
-  }
-
-  71.4286% {
-    border-color: nth($border-colors, 6);
-  }
-
-  85.7143%,
-  100% {
-    border-color: nth($border-colors, 7);
-  }
-}
-
-
 .Header {
   width: 100%;
   display: flex;
@@ -42,6 +6,7 @@ $border-colors: red, orange, yellow, green, blue, indigo, violet;
   padding: 0 30px;
   background: #fff;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  z-index: 1;
 
   .h-left {}
 

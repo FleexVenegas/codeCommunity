@@ -1,0 +1,46 @@
+.MainView_{
+    .m-cntQuestion{
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+
+        .m-cards{
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+
+            .m-texts{
+                display: flex;
+                flex-direction: column;
+                gap: 7px;
+
+                .m-title{
+                    font-size: 22px;
+                    color: #162B4E;
+
+                    &:hover{
+                        text-decoration: underline;
+                    }
+                }
+            }
+
+
+            .m-tagFooter{
+                width: 100%;
+                display: flex;
+                gap: 10px;
+    
+                .m-tags{
+                    cursor: default;
+                    border-radius: 5px;
+                    padding: 5px;
+                    border: 1px solid #000;
+                }
+            }
+        }
+
+    }
+}

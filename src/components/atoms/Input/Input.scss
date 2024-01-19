@@ -1,25 +1,27 @@
-.cntInput{
-    width: 600px;
-    height: 40px;
-    position: relative;
+.cnt-Input{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 
-    .Input{
+    .i-txt{
+        margin-left: 10px;
+        font-size: 15px;
+        color: #fff;
+    }
+
+    .input{
         width: 100%;
         height: 40px;
-        border-radius: 10px;
+        background: #036e9d;
         border: none;
         outline: none;
-        padding: 0 10px 0 46px;
-        color: rgba(0, 0, 0, 0.7);
-        font-size: 15px;
-        font-weight: 400;
-        box-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
-    }
-    
-    img{
-        position: absolute;
-        top: calc(50% - 16px);
-        left: 5px;
-        opacity: 0.5;
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 17px;
+        padding: 0 10px;
+
+        &:focus{
+            border-radius: 5px;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
     }
 }
