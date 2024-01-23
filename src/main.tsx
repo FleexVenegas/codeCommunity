@@ -1,7 +1,18 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from "react-router-dom"
+
+import { Provider } from 'react-redux'
+
+// Components
 import Visitors from './routes/visitors/Visitors.tsx'
+
+// global styles"
+import "primereact/resources/themes/lara-light-indigo/theme.css";  //theme
+import "primereact/resources/primereact.min.css";                  //core css
+import "primeicons/primeicons.css";
+
+//Styles
 import './index.css'
 
 export default function RootRoute() {
@@ -16,6 +27,8 @@ export default function RootRoute() {
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <RootRoute />
+    {/* <Provider store={store}>  */}
+        <RootRoute />
+    {/* </Provider> */}
   </React.StrictMode>,
 )

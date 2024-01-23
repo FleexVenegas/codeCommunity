@@ -6,6 +6,10 @@
     justify-content: center;
     padding: 50px;
 
+    &.card-rize{
+        min-height: calc(100vh - 110px);
+    }
+
     .WhiteCard{
         padding: 30px;
         width: 80%;

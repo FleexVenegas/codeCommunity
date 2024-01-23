@@ -1,0 +1,41 @@
+.Button_{
+    width: 150px;
+    height: 30px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    background:  gray;
+    color: #fff;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: 0.5s;
+
+    &:hover{
+        transition: 0.5s;
+        letter-spacing: 3px;
+    }
+
+    &.btn-submit{
+        border: 1px solid #006f9e;
+        background: #009fe3;
+        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+        
+        &:hover{
+            background: #006f9e;
+            border-color: #009fe3;
+        }
+    }
+    
+    &.btn-cancel{
+        background: #c40000;
+        border: 1px solid #7c0000;
+        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+
+        &:hover{
+            background: #7c0000;
+            border-color: #c40000;
+        }
+    }
+
+}

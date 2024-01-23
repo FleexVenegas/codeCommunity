@@ -5,6 +5,13 @@
     align-items: center;
     position: relative;
 
+    .l-delogin{
+        box-shadow: unset;
+        background: transparent;
+        display: flex;
+        justify-content: center;
+    }
+
     .l-form{
         width: 519px;
         height: 491px;

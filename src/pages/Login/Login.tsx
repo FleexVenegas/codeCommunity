@@ -51,7 +51,7 @@ function Login() {
 
   return (
 	<>
-		<CardView className='Login'>
+		<CardView className='Login' classCard='l-delogin'>
 			<ReturnBtn url='/' />
 			<form onSubmit={handleSubmit} className='l-form'>
 				<div className='l-cnt-img'>

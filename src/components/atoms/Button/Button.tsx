@@ -1,9 +1,28 @@
 import React from 'react'
 
-const Button = () => {
+import "./Button.scss"
+
+interface ButtonProps{
+	text: string
+	className?: string
+	submit?: boolean
+	cancel?: boolean
+	onClick?: () => void
+
+}
+
+const Button = ({text, className, submit = false, cancel = false, onClick}: ButtonProps) => {
   return (
-    <div>Button</div>
-  )
+    <>
+      <button
+        className={`Button_ ${className} ${submit && "btn-submit"} ${
+          cancel && "btn-cancel"
+        }`}
+		onClick={onClick} >
+        {text}
+      </button>
+    </>
+  );
 }
 
 export default Button
