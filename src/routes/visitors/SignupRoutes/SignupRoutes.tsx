@@ -1,15 +1,16 @@
 import { Suspense } from 'react'
 import { Route, Routes } from 'react-router-dom'
-import Login from '../../../pages/Login/Login'
+import Signup from '../../../pages/Signup/Signup'
 
-const LoginRoutes = () => {
+
+const SignupRoutes = () => {
   return (
     <Routes>
         <Route 
-            path='/user/login'
+            path='/user/signup'
             element={
                 <Suspense fallback={<></>}>
-                    <Login />
+                    <Signup />
                 </Suspense>
             }
         />
@@ -17,4 +18,4 @@ const LoginRoutes = () => {
   )
 }
 
-export default LoginRoutes
+export default SignupRoutes

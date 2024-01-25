@@ -10,6 +10,7 @@ import Input from '../../components/atoms/Input/Input'
 import InputPassword from '../../components/atoms/InputPassword/InputPassword'
 import ReturnBtn from '../../components/atoms/ReturnBtn/ReturnBtn'
 import { Validations } from '../../utilities/Validations'
+import { fieldNameProps } from '../../interface/interface'
 
 
 interface CredentialsProps{
@@ -17,12 +18,13 @@ interface CredentialsProps{
 	password: string
 }
 
-
 function Login() {
 	const [credentials, setCredentials] = useState<CredentialsProps>({
 		username: "",
 		password: ""
 	})
+
+	const [fieldName, setFieldName] = useState<fieldNameProps>({})
 
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.currentTarget
@@ -30,23 +32,22 @@ function Login() {
 			...prevCredentials,
 			[name]: value,
 		}))
+		setFieldName({})
 	}
-
-	
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
 		const validationResults = Validations(credentials)
+		
 		if (!validationResults.isValid) {
-
 			// Aplica estilos a los campos que están vacíos
 			Object.keys(validationResults.emptyFields).forEach((field) => {
-			  // Aquí puedes aplicar estilos específicos, por ejemplo, cambiar el borde
-			  console.log(`Aplicar estilos a ${field}`);
-
-
+				setFieldName((prevFields) => ({...prevFields, [field]: false }))
 			});
-		  }
+		}
+		else{
+			console.log(credentials)
+		}
 	}
 
   return (
@@ -58,9 +59,9 @@ function Login() {
 					<img src={User} alt="" className='l-image' />
 					<p className='l-title'>Sign In</p>
 				</div>
-				<Input text='User' id='username' name='username' className='cntInput' placeholder='Username' onChange={handleChange}/>
+				<Input text='User' id='username' name='username' className={`cntInput ${fieldName.username === false && "emptyField"}`} placeholder='Username' onChange={handleChange}/>
 				<div className="cnt-mid">
-					<InputPassword text='Password' id='password' name='password' className='cntInput' placeholder='Password' onChange={handleChange} />
+					<InputPassword text='Password' id='password' name='password' className={`cntInput ${fieldName.password === false && "emptyField"}`} placeholder='Password' onChange={handleChange} />
 					<NavLink to={"#"} className={"forgot-password"}>I forgot my password</NavLink>
 				</div>
 				<button type="submit" className='btn-submit'>SIGN IN</button>

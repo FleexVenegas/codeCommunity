@@ -55,3 +55,9 @@ body {
   /* background: black; */
   font-size: 15px;
 }
+
+
+/* Esta es una clase para manejar el estilo de las componentes Input si estan vacios */
+.emptyField{
+  border-bottom: 2px solid red;
+}

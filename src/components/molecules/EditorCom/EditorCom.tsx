@@ -24,6 +24,10 @@ const EditorCom = ({placeholder, setValueText}: EditorProps) => {
 
 	const Header = renderHeader()
 
+  // const handleOnChange = () => {
+    
+  // }
+
 
   return (
     <div className="EditorCom">

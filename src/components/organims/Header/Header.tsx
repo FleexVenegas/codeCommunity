@@ -23,7 +23,7 @@ const Header = () => {
                         <NavLink to={"/user/login"} className={"btnNav btn-login"}>
                             Log in
                         </NavLink>
-                        <NavLink to={"#"} className={"btnNav btn-sign"}>
+                        <NavLink to={"/user/signup"} className={"btnNav btn-sign"}>
                             Sign up
                         </NavLink>
                     </div>

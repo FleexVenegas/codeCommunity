@@ -69,6 +69,10 @@
             input::placeholder{
                 color: rgba(255, 255, 255, 0.5);
             }
+
+            &.red-username{
+                border-bottom: 1px solid red;
+            }
         }
 
         .cnt-mid{

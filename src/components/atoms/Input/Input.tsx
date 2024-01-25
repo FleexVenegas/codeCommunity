@@ -4,18 +4,20 @@ import "./Input.scss"
 
 interface InputProps{
     className?: string
+    classInput?: string
     name?: string
     id?: string
+    type?: string
     text?: string
     placeholder?: string
     onChange?: ChangeEventHandler<HTMLInputElement>;
 }
 
-const Input = ({className, text, placeholder, onChange, name, id}: InputProps) => {
+const Input = ({className, text, placeholder, onChange, name, id, type="text"}: InputProps) => {
   return (
     <div className={`cnt-Input ${className}`}>
         {text && <label className='i-txt'>{text}</label>}
-        <input type="text" name={name} id={id} className={`input`} placeholder={placeholder} onChange={onChange}/>
+        <input type={type} name={name} id={id} className={`input`} placeholder={placeholder} onChange={onChange} required/>
     </div>
   )
 }

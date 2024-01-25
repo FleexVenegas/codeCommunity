@@ -73,21 +73,19 @@ const MainView = () => {
         <div className='m-cntQuestion'>
             {question.map((_, idx) => {
                 return(
-                    <>
-                        <div className='m-cards' key={idx}>
-                            <div className='m-texts'>
-                                <NavLink to={`/question/${_.id}/${_.title}`} className='m-title'>{_.title}</NavLink>
-                                <p className='m-description'>{_.descript}</p>
-                            </div>
-                            <div className='m-tagFooter'>
-                                {_.tags.map((tag, idx) => (
-                                    <div key={idx} className="m-tags">
-                                        {tag.tag}
-                                    </div>
-                                ))}
-                            </div>
+                    <div className='m-cards' key={idx}>
+                        <div className='m-texts'>
+                            <NavLink to={`/question/${_.id}/${_.title}`} className='m-title'>{_.title}</NavLink>
+                            <p className='m-description'>{_.descript}</p>
                         </div>
-                    </>
+                        <div className='m-tagFooter'>
+                            {_.tags.map((tag, idx) => (
+                                <div key={idx} className="m-tags">
+                                    {tag.tag}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
                 )
             })}
         </div>

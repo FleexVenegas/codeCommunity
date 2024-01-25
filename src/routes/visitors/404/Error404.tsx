@@ -5,7 +5,7 @@ import PageNotFound from '../../../pages/404/PageNotFound'
 function Error404() {
   return (
     <Routes>
-        <Route Component={PageNotFound}/>
+        <Route path='' Component={PageNotFound}/>
     </Routes>
   )
 }

@@ -20,5 +20,15 @@
         display: flex;
         justify-content: flex-end;
         gap: 20px;
+
+        .disabledBtn{
+            pointer-events: none;
+            opacity: 0.5;
+
+            &.enabledBtn{
+                pointer-events: all;
+                opacity: 1;
+            }
+        }
     }
 }
