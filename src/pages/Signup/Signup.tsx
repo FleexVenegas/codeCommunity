@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 
 // Styles
 import "./Signup.scss"
@@ -58,6 +58,7 @@ const Signup = () => {
     })
 
     const [emptyField, setEmptyField] = useState<fieldNameProps>({})
+    const navigate = useNavigate()
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.currentTarget
@@ -93,10 +94,15 @@ const Signup = () => {
                     const _response = response as apiSuccess
                     if(_response.status === 200){
                         Successfully(_response.data.message)
+                        
+                        setTimeout(() => {
+                            navigate("/user/login")
+                        }, 2600)
                     }
 
                 } else{
-                    WarningWithText("The password is not valid. It must be at least 8 characters, include at least one number and one of the following symbols: !@#$%^&*.")
+                    WarningWithText("The password is not valid. It must be at least 8 characters, include at least one number" + 
+                                    " and one of the following symbols: !@#$%^&*.")
                 }
 
             } catch (error) {

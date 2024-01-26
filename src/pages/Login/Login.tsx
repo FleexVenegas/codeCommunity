@@ -10,13 +10,17 @@ import Input from '../../components/atoms/Input/Input'
 import InputPassword from '../../components/atoms/InputPassword/InputPassword'
 import ReturnBtn from '../../components/atoms/ReturnBtn/ReturnBtn'
 import { Validations } from '../../utilities/Validations'
-import { fieldNameProps } from '../../interface/interface'
+import { ApiError, ApiSucces, fieldNameProps } from '../../interface/interface'
+import { postAxiosApi } from '../../services/api/Api'
+import { Warning } from '../../utilities/SweetAlertModal'
+import { setCookie } from '../../services/cookies/Cookies'
 
 
 interface CredentialsProps{
 	username: string
 	password: string
 }
+
 
 function Login() {
 	const [credentials, setCredentials] = useState<CredentialsProps>({
@@ -35,7 +39,7 @@ function Login() {
 		setFieldName({})
 	}
 
-	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
 		const validationResults = Validations(credentials)
 		
@@ -46,7 +50,26 @@ function Login() {
 			});
 		}
 		else{
-			console.log(credentials)
+
+
+			const cookies = setCookie("myCookie", "123456789")
+			console.log(cookies)
+			
+			// const formaData = new FormData()
+			// formaData.append("credentials", JSON.stringify(credentials))
+
+			// const response: unknown = await postAxiosApi("/api/auth/validate-credentials", formaData)
+			
+			// if(typeof response !== "object" || response === null) { throw new Error("Unexpected response format") }
+
+			// if('name' in response && (response as ApiError).name === "AxiosError"){
+			// 	const resAxios = response as ApiError
+			// 	Warning(resAxios.response.data.message)
+			// }
+
+			// const _response = response as ApiSucces
+			
+
 		}
 	}
 
