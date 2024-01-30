@@ -2,6 +2,7 @@ import { Suspense } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import MainView from '../../../pages/MainView/MainView'
 import SeeQuestion from '../../../pages/MainView/SeeQuestion/SeeQuestion'
+import AskQuestion from '../../../pages/MainView/AskQuestion/AskQuestion'
 
 const MainViewRoute = () => {
   return (
@@ -19,6 +20,14 @@ const MainViewRoute = () => {
             element={
                 <Suspense fallback={<></>}>
                     <SeeQuestion />
+                </Suspense>
+            }
+        />
+        <Route
+            path='/question/ask-question'
+            element={
+                <Suspense fallback={<></>}>
+                    <AskQuestion />
                 </Suspense>
             }
         />

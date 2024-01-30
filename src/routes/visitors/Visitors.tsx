@@ -3,6 +3,7 @@ import MainViewRoute from './MainViewRoute/MainViewRoute'
 // import Error404 from './404/Error404'
 import SignupRoutes from './SignupRoutes/SignupRoutes'
 import LoginRoutes from './LoginRoutes/LoginRoutes'
+import ProfileRoutes from './ProfileRoutes/ProfileRoutes'
 
 const Visitors = () => {
   return (
@@ -10,6 +11,7 @@ const Visitors = () => {
         <MainViewRoute />
         <LoginRoutes />
         <SignupRoutes />
+        <ProfileRoutes />
         {/* <Error404 /> */}
     </Layout>
   )

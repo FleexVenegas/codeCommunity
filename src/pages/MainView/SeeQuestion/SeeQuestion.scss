@@ -43,16 +43,44 @@
                 padding: 30px;
                 border-radius: 10px;
                 box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
-    
-                .s-title{
-                    font-size: 23px;
+                
+                .se-cntHeader{
+                    .s-title{
+                        font-size: 33px;
+                    }
+
+                    .s-date{
+                        margin-left: 10px;
+                        margin-top: 5px;
+                        color: rgba(0, 0, 0, 0.5);
+                    }
                 }
+
+
+                .ql-syntax{
+                    border-radius: 5px;
+                    padding: 10px;
+                    background: #ededeb;
+                    color: #00b300;
+                }
+
+
             
                 .s-cntDescription{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 15px;
                     font-size: 15px;
                     text-align: justify;
                     letter-spacing: 0.5px;
                     line-height: 20px;
+
+                    li{
+                        font-size: 20px;
+                    }
+                    p{
+                        font-size: 15px;
+                    }
                 }
     
                 .s-cntTags{
@@ -60,9 +88,12 @@
                     gap: 15px;
     
                     .s-tag{
-                        border: 1px solid #000;
+                        background: #009f2b;
                         border-radius: 3px;
-                        padding: 5px;
+                        padding: 8px;
+                        color: #fff;
+                        font-weight: 300;
+                        cursor: default;
                     }
                 }
             }

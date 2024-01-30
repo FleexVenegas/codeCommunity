@@ -1,0 +1,70 @@
+.AskQuestion{
+    position: relative;
+    
+    .AskCard{
+        // background: transparent;
+        .cnt-formDatas{
+
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+
+            .as-titlesInputs{
+                font-size: 15px;
+                color: rgba(0, 0, 0, 0.6);
+                margin-left: 10px;
+                font-weight: bold;
+                letter-spacing: 1px;
+            }
+
+            .as-description{
+                font-size: 13px;
+                color: rgba(0, 0, 0, 0.5);
+                margin: 5px 0 10px 25px;
+            }
+
+            label{
+                color: rgba(0, 0, 0, 0.6);
+            }
+
+            .input-title{
+                input{
+                    border: 1px solid rgba(0, 0, 0, 0.4);
+                    background: #f9fafb;
+                    color: rgba(0, 0, 0, 0.7);
+                }
+            }
+
+            .as-editor{
+
+                .ql-container{
+                    background: #f9fafb;
+                }
+
+                .ql-toolbar{
+                    background: #cad8e7;
+                }
+                
+                .ql-editor{
+                    color: rgba(0, 0, 0, 0.7);
+                    background: #f9fafb;
+                    font-size: 17px;
+
+                    .ql-syntax{
+                        font-size: 14px;
+                    }
+                }
+            }
+
+            .ask-cntBtn{
+
+                .btnQuestion{
+                    width: 200px;
+                    height: 40px;
+                }
+            }
+            
+      
+        }
+    }
+}

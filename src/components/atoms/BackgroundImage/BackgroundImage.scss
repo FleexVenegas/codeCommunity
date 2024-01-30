@@ -1,0 +1,13 @@
+.BackgroundImage{
+    width: 100%;
+    height: 100%;
+    background-image: url(../../../assets/images/cuadrado.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    .bg-deg{
+        width: 100%;
+        height: 100vh;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 3%, #c7c7c7 72%, #757575 100%)
+    }
+}

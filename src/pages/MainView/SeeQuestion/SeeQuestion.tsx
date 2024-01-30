@@ -1,52 +1,60 @@
 
 import { useEffect, useState } from "react"
-import CardView from "../../../components/molecules/CardView/CardView"
-import "./SeeQuestion.scss"
 import { useParams } from "react-router-dom"
+
+import CardView from "../../../components/molecules/CardView/CardView"
 import ResponseBtn from "../../../components/atoms/ResponseBtn/ResponseBtn"
 import CardForm from "../../../components/molecules/CardForm/CardForm"
 import ReturnBtn from "../../../components/atoms/ReturnBtn/ReturnBtn"
+import "./SeeQuestion.scss"
+import { getAxiosApi } from "../../../services/api/Api"
+import { Warning } from "../../../utilities/SweetAlertModal"
+import { ParsedQuestion, Question } from "../../../interface/interface"
 
 const SeeQuestion = () => {
 
-    const { titleQuestion } = useParams()
+    const { titleQuestion, id } = useParams()
     const [openQuestion, setOpenQuestion] = useState<boolean>(false)
+    const [questionData, setQuestionData] = useState<ParsedQuestion[]>([])
 
-    const myInfo = [
-      {
-        id: 1,
-        title: titleQuestion,
-        question: " ¿Qué es Lorem Ipsum? Lorem Ipsum es simplemente el texto de relleno de " +
-                  "las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de" +
-                  " relleno estándar de las industrias desde el año 1500, cuando un impresor " +
-                  "(N. del T. persona que se dedica a la imprenta) desconocido usó una " +
-                  " galería de textos y los mezcló de tal manera que logró hacer un libro de" +
-                  " textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó",
-        tags: [
-          {
-            id: 1,
-            tag: "Python",
-          },
-          {
-            id: 2,
-            tag: "NodeJS"
-          }
-        ]
-      }
-    ]
+    useEffect(() => {
 
+        const getQuestion = async () => {
+            try {
+                const response: Question = await getAxiosApi(`/api/community/get-question/${id}`)    
+                const updateDatas: ParsedQuestion[]  = [response].map((item: Question) => {
+                    return{
+                        ...item,
+                        tags: item.tags.replace(/['"]+/g, '').split(',').map(itm => ({ tag: itm.trim() }))
+                    }
+                })
+                
+                setQuestionData(updateDatas)
 
+            } catch (error) {
+                Warning("Network Error")
+                console.log(error)
+            }
+        }
+
+        getQuestion()
+      
+    }, [])
+    
   return (
     <CardView className="SeeQuestion" classCard={`s-cardQuestion ${openQuestion && "s-width100"}`} heightVh>
 
         <ReturnBtn className="btn-return" url="/" />
 
         <div className={`cnt-support ${openQuestion && "s-gap"}`}>
-            {myInfo.map((_, idx) => {
+            {questionData.map((_, idx) => {
                 return(
                     <div key={idx} className="cnt_question">
-                        <h1 className="s-title">{_.title}</h1>
-                        <p className="s-cntDescription">{_.question}</p>
+                        <div className="se-cntHeader">
+                            <h1 className="s-title">{_.title}</h1>
+                            <p className="s-date">{_.registration_date}</p>
+                        </div>
+                        <div className="s-cntDescription" dangerouslySetInnerHTML={{__html: _.description}}></div>
                         <div className="s-cntTags">
                             {_.tags.map((_, idx) => (
                                 <div key={idx} className="s-tag">{_.tag}</div>

@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from "react-router-dom"
+import { ContextProvider } from './context/ContextProvider.tsx'
 
 // import { Provider } from 'react-redux'
 
@@ -28,7 +29,9 @@ export default function RootRoute() {
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     {/* <Provider store={store}>  */}
+    <ContextProvider>
         <RootRoute />
+    </ContextProvider>
     {/* </Provider> */}
   </React.StrictMode>,
 )

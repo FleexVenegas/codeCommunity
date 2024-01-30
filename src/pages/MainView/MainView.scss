@@ -1,8 +1,23 @@
 .MainView_{
+
+    .m_mainCard{
+        min-height: calc(100vh);
+    }
+
     .m-cntQuestion{
         display: flex;
         flex-direction: column;
         gap: 15px;
+
+        .cnt-button{
+            display: flex;
+            justify-content: flex-end;
+
+            .btn-question{
+                width: 200px;
+                height: 40px;
+            }
+        }
 
         .m-cards{
             padding: 15px;
@@ -14,7 +29,9 @@
 
             .m-texts{
                 display: flex;
-                flex-direction: column;
+                align-items: center;
+                justify-content: space-between;
+                // flex-direction: column;
                 gap: 7px;
 
                 .m-title{
@@ -25,6 +42,10 @@
                         text-decoration: underline;
                     }
                 }
+
+                .m-date{
+                    color: rgba(0, 0, 0, 0.5);
+                }
             }
 
 
@@ -34,10 +55,12 @@
                 gap: 10px;
     
                 .m-tags{
+                    background: #009f2b;
+                    border-radius: 3px;
+                    padding: 8px;
+                    color: #fff;
+                    font-weight: 300;
                     cursor: default;
-                    border-radius: 5px;
-                    padding: 5px;
-                    border: 1px solid #000;
                 }
             }
         }

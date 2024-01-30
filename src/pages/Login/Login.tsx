@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 
 //Assets
 import User from '../../assets/images/usuario.png'
@@ -12,7 +12,7 @@ import ReturnBtn from '../../components/atoms/ReturnBtn/ReturnBtn'
 import { Validations } from '../../utilities/Validations'
 import { ApiError, ApiSucces, fieldNameProps } from '../../interface/interface'
 import { postAxiosApi } from '../../services/api/Api'
-import { Warning } from '../../utilities/SweetAlertModal'
+import { Successfully, Warning } from '../../utilities/SweetAlertModal'
 import { setCookie } from '../../services/cookies/Cookies'
 
 
@@ -29,6 +29,7 @@ function Login() {
 	})
 
 	const [fieldName, setFieldName] = useState<fieldNameProps>({})
+	const navigate = useNavigate()
 
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.currentTarget
@@ -50,26 +51,36 @@ function Login() {
 			});
 		}
 		else{
-
-
-			const cookies = setCookie("myCookie", "123456789")
-			console.log(cookies)
 			
-			// const formaData = new FormData()
-			// formaData.append("credentials", JSON.stringify(credentials))
+			const formaData = new FormData()
+			formaData.append("credentials", JSON.stringify(credentials))
 
-			// const response: unknown = await postAxiosApi("/api/auth/validate-credentials", formaData)
+			const response: unknown = await postAxiosApi("/api/auth/validate-credentials", formaData)
 			
-			// if(typeof response !== "object" || response === null) { throw new Error("Unexpected response format") }
+			if(typeof response !== "object" || response === null) { throw new Error("Unexpected response format") }
 
-			// if('name' in response && (response as ApiError).name === "AxiosError"){
-			// 	const resAxios = response as ApiError
-			// 	Warning(resAxios.response.data.message)
-			// }
+			if('name' in response && (response as ApiError).name === "AxiosError"){
+				const resAxios = response as ApiError
+				Warning(resAxios.response.data.message)
+			}
 
-			// const _response = response as ApiSucces
+			const _response = response as ApiSucces
+			console.log(_response)
+
+			if(_response.status === 200){
+				console.log(_response.data.id)
+				setCookie("105100", _response.data.id, {path: "/"})
+				setCookie("116110", _response.data.authToken, { path: "/" });
+				setCookie("117114", _response.data.username, { path: "/" });
+
+				Successfully(`Welcome to Community`)
+
+				setTimeout(() => {
+					window.location.href = "/"
+				}, 2600)
+				
+			}
 			
-
 		}
 	}
 

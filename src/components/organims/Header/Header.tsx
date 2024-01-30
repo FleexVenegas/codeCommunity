@@ -1,13 +1,48 @@
-import React from 'react'
-
-import "./Header.scss"
+import { useEffect, useState } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
+
 import InputH from "../../atoms/InputH/InputH"
+import { getCookie } from '../../../services/cookies/Cookies'
+import { getAxiosApiWithToken } from '../../../services/api/Api'
+import { Warning } from '../../../utilities/SweetAlertModal'
+
+//Assets
+import Mishi from '../../../assets/images/Michi.jpg'
+
+//Styles
+import "./Header.scss"
+import Profile from '../../molecules/Profile/Profile'
+interface validatedUser{
+    message: string
+}
 
 const Header = () => {
 
+    const [acc, setAcc] = useState<boolean>(false)
     const use_location = useLocation()
     const userStart: boolean = use_location.pathname.startsWith("/user/")
+
+    useEffect(() => {
+
+        const verifySession = async () => {
+            try {
+                const get_cookie = getCookie("116110")
+                if(get_cookie){
+                    const response: unknown = await getAxiosApiWithToken("/api/auth/validate-akn", get_cookie)
+                    const _response = response as validatedUser
+                    if (_response.message === "Authorized access"){
+                        setAcc(true)
+                    }
+                }
+            } catch (error) {
+                Warning("Error validating user")
+            }
+        }
+
+        verifySession()
+
+    }, [])
+
 
   return (
     <header className='Header_ Header'>
@@ -15,10 +50,11 @@ const Header = () => {
             -commu
         </div>
         <div className='h-right'>
-            { !userStart &&
-                <>
-                    <InputH placeholder='Search' />
-
+            <InputH placeholder='Search' />
+            {acc ? (
+                <Profile />
+            ): (
+                !userStart &&
                     <div className='cnt_btnLogins'>
                         <NavLink to={"/user/login"} className={"btnNav btn-login"}>
                             Log in
@@ -27,9 +63,7 @@ const Header = () => {
                             Sign up
                         </NavLink>
                     </div>
-                </>
-            }
-
+            )}
         </div>
     </header>
   )

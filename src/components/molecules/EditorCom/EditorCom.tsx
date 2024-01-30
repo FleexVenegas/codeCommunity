@@ -5,10 +5,13 @@ import "./EditorCom.scss"
 
 interface EditorProps{
 	placeholder?: string
+  className?: string
 	setValueText?: (text: string) => void
+  height?: string  
+  name?: string 
 }
 
-const EditorCom = ({placeholder, setValueText}: EditorProps) => {
+const EditorCom = ({placeholder, setValueText, height = "50vh", className, name}: EditorProps) => {
   const [text, setText] = useState<string | null>('');
   
 	const renderHeader = () => {
@@ -24,20 +27,17 @@ const EditorCom = ({placeholder, setValueText}: EditorProps) => {
 
 	const Header = renderHeader()
 
-  // const handleOnChange = () => {
-    
-  // }
-
-
   return (
     <div className="EditorCom">
       <Editor
+        className={className}
+        name={name}
         value={text ? text : ""}
         onTextChange={(e) => {
           setText(e.htmlValue),
             e.htmlValue && setValueText && setValueText(e.htmlValue);
         }}
-        style={{ minHeight: "50vh" }}
+        style={{ minHeight: height }}
         headerTemplate={Header}
         placeholder={placeholder}
       />
