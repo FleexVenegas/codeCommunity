@@ -13,6 +13,5 @@ export const Validations = (datas) => {
     return {
       isValid: Object.keys(emptyFields).length === 0,
       emptyFields: emptyFields,
-      styleColor: "border: 1px solid red;"
     };
   };

@@ -8,10 +8,10 @@ import "./Profile.scss"
 import { NavLink } from 'react-router-dom'
 
 const Profile = () => {
-  const get_c105 = getCookie("105100")
+  const id: string | null = localStorage.getItem("self")
 
   return (
-    <NavLink to={`/profile/${get_c105}`} className='Profile-e'>
+    <NavLink to={`/profile/${id}`} className='Profile-e'>
         <img src={Mishi} alt="" className='p-image' />
     </NavLink>
   )

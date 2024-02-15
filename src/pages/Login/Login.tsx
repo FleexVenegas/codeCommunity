@@ -10,7 +10,7 @@ import Input from '../../components/atoms/Input/Input'
 import InputPassword from '../../components/atoms/InputPassword/InputPassword'
 import ReturnBtn from '../../components/atoms/ReturnBtn/ReturnBtn'
 import { Validations } from '../../utilities/Validations'
-import { ApiError, ApiSucces, fieldNameProps } from '../../interface/interface'
+import { ApiError, ApiLogin, ApiSucces, fieldNameProps } from '../../interface/interface'
 import { postAxiosApi } from '../../services/api/Api'
 import { Successfully, Warning } from '../../utilities/SweetAlertModal'
 import { setCookie } from '../../services/cookies/Cookies'
@@ -64,16 +64,11 @@ function Login() {
 				Warning(resAxios.response.data.message)
 			}
 
-			const _response = response as ApiSucces
-			console.log(_response)
+			const _response = response as ApiLogin
 
 			if(_response.status === 200){
-				console.log(_response.data.id)
-				setCookie("105100", _response.data.id, {path: "/"})
-				setCookie("116110", _response.data.authToken, { path: "/" });
-				setCookie("117114", _response.data.username, { path: "/" });
-
-				Successfully(`Welcome to Community`)
+				Successfully(_response.data.message)
+				localStorage.setItem("self", _response.data.id)
 
 				setTimeout(() => {
 					window.location.href = "/"

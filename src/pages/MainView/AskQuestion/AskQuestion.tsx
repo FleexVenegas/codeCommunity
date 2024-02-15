@@ -9,7 +9,7 @@ import Button from '../../../components/atoms/Button/Button'
 import { ApiError, detailsInput, fieldNameProps } from '../../../interface/interface'
 import { Validations } from '../../../utilities/Validations'
 import { getCookie } from '../../../services/cookies/Cookies'
-import { postAxiosApiWithToken } from '../../../services/api/Api'
+import { postAxiosApi, postAxiosApiWithToken } from '../../../services/api/Api'
 import { Successfully, Warning } from '../../../utilities/SweetAlertModal'
 
 
@@ -21,15 +21,13 @@ interface respoApi{
 
 const AskQuestion = () => {
 
-    const get_cookies105 = getCookie("105100")
-    const get_cookies116 = getCookie("116110")
+
     const [emptyField, setEmptyField] = useState<fieldNameProps>({})
     const [textEditor, setTextEditor] = useState<string>("")
     const [detailsInput, setDetailsInput] = useState<detailsInput>({
         title: "",
         description: "",
-        tags: "", 
-        id_user: ""
+        tags: "",
     })
 
 
@@ -47,7 +45,6 @@ const AskQuestion = () => {
         setDetailsInput((prevetDetail) => ({
             ...prevetDetail,
             description: textEditor,
-            id_user: get_cookies105
           }));
     }, [textEditor])
     
@@ -59,16 +56,15 @@ const AskQuestion = () => {
             const formData = new FormData()
             formData.append("question", JSON.stringify(detailsInput))
 
-            const response: unknown = await postAxiosApiWithToken('/api/community/add-question', formData, get_cookies116)
-            
+            const response: unknown = await postAxiosApi('/api/community/add-question', formData)
             if(typeof response !== "object" || response === null) { throw new Error("Unexpected response format") }
 
 			if('name' in response && (response as ApiError).name === "AxiosError"){
 				const resAxios = response as ApiError
 				return Warning(resAxios.response.data.message)
 
-			} else{
-
+			} 
+            else {
                 const _response = response as respoApi
                 if(_response.status === 200){
                     Successfully(_response.data.message)

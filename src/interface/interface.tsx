@@ -12,6 +12,15 @@ export interface ApiError{
 	}
 }
 
+export interface ApiLogin{
+	status: number
+	statusText: string
+	data: {
+		id: string
+		message: string
+	}
+}
+
 export interface ApiSucces{
 	status: number
 	statusText: string
@@ -23,36 +32,53 @@ export interface ApiSucces{
 	}
 }
 
-export interface Question {
-	id: string;
-	title: string
-	description: string;
-	tags: string
-	registration_date: string;
-	id_user: string;
+export interface ProfileApi{
+    data: string
 }
-
-export interface ApiSuccessQuestion {
-  data: Question[];
-}
-
 
 export interface Tag {
   tag: string;
-}
-
-export interface ParsedQuestion {
-  description: string;
-  title: string
-  id: string;
-  id_user: string;
-  registration_date: string;
-  tags: Tag[]; // 'tags' es ahora un array de objetos 'Tag'
 }
 
 export interface detailsInput {
     title: string;
     description: string;
     tags: string;
-	id_user: string
+}
+
+
+
+// Estas intreface son de la vista SeeQuestion
+export interface Answer {
+	id_response: string;
+	registration_date_answer: string;
+	response: string
+  }
+  
+export interface Question {
+	description: string;
+	id_question: string
+	registration_date: string
+	tags: string
+	title: string
+}
+
+export interface UpQuestions {
+    tags: {
+        tag: string;
+    }[] | undefined;
+    description?: string | undefined;
+    id_question?: string | undefined;
+    registration_date?: string | undefined;
+    title?: string | undefined;
+}[]
+
+  
+export interface QAItem {
+	answers?: Answer[];
+	question?: Question;
+}
+  
+export interface Props {
+	data: QAItem[];
 }

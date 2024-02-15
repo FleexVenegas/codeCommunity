@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
-import { NavLink, useLocation } from 'react-router-dom'
+import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 
 import InputH from "../../atoms/InputH/InputH"
 import { getCookie } from '../../../services/cookies/Cookies'
-import { getAxiosApiWithToken } from '../../../services/api/Api'
+import { getAxiosApi, getAxiosApiWithToken } from '../../../services/api/Api'
 import { Warning } from '../../../utilities/SweetAlertModal'
 
 //Assets
@@ -19,6 +19,7 @@ interface validatedUser{
 const Header = () => {
 
     const [acc, setAcc] = useState<boolean>(false)
+    const navigate = useNavigate()
     const use_location = useLocation()
     const userStart: boolean = use_location.pathname.startsWith("/user/")
 
@@ -26,13 +27,13 @@ const Header = () => {
 
         const verifySession = async () => {
             try {
-                const get_cookie = getCookie("116110")
-                if(get_cookie){
-                    const response: unknown = await getAxiosApiWithToken("/api/auth/validate-akn", get_cookie)
-                    const _response = response as validatedUser
-                    if (_response.message === "Authorized access"){
-                        setAcc(true)
-                    }
+                const response: unknown = await getAxiosApi("/api/auth/validate-akn")
+                const _response = response as validatedUser
+                if (_response.message === "Authorized access"){
+                    setAcc(true)
+                }
+                else{
+                    // navigate("/user/login")
                 }
             } catch (error) {
                 Warning("Error validating user")
@@ -42,7 +43,6 @@ const Header = () => {
         verifySession()
 
     }, [])
-
 
   return (
     <header className='Header_ Header'>

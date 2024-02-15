@@ -8,11 +8,11 @@ interface EditorProps{
   className?: string
 	setValueText?: (text: string) => void
   height?: string  
-  name?: string 
+  name?: string
+  valueText?: string | null
 }
 
-const EditorCom = ({placeholder, setValueText, height = "50vh", className, name}: EditorProps) => {
-  const [text, setText] = useState<string | null>('');
+const EditorCom = ({placeholder, setValueText, height = "50vh", className, name, valueText}: EditorProps) => {
   
 	const renderHeader = () => {
 		return (
@@ -32,11 +32,8 @@ const EditorCom = ({placeholder, setValueText, height = "50vh", className, name}
       <Editor
         className={className}
         name={name}
-        value={text ? text : ""}
-        onTextChange={(e) => {
-          setText(e.htmlValue),
-            e.htmlValue && setValueText && setValueText(e.htmlValue);
-        }}
+        value={valueText ? valueText : ""}
+        onTextChange={(e) => e.htmlValue && setValueText && setValueText(e.htmlValue)}
         style={{ minHeight: height }}
         headerTemplate={Header}
         placeholder={placeholder}

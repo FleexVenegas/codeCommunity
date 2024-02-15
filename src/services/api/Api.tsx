@@ -59,7 +59,7 @@ export const postAxiosApiWithToken = async (url: string, form: FormData | null, 
             withCredentials: true,
             headers: { "Authorization": `Bearer ${token}` },
         });
-        return response;
+        return response.data;
         
     } catch (error) {
         return error;

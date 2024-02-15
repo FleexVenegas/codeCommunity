@@ -25,94 +25,177 @@
         }
 
         .cnt-support{
-            display: flex;
-            // gap: 30px;
             height: 100%;
             transition: 0.5s;
-            
-            // &.s-gap{
-            // }
 
-            .cnt_question{
-                display: flex;
-                flex-direction: column;
-                gap: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+
+            .cnt-secct{
                 width: 100%;
-                
-                background: #fff;
-                padding: 30px;
-                border-radius: 10px;
-                box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
-                
-                .se-cntHeader{
-                    .s-title{
-                        font-size: 33px;
-                    }
-
-                    .s-date{
-                        margin-left: 10px;
-                        margin-top: 5px;
-                        color: rgba(0, 0, 0, 0.5);
-                    }
-                }
-
-
-                .ql-syntax{
-                    border-radius: 5px;
-                    padding: 10px;
-                    background: #ededeb;
-                    color: #00b300;
-                }
-
-
-            
-                .s-cntDescription{
+                display: flex;
+                // transition: 0.5s;
+                .cnt_question{
                     display: flex;
                     flex-direction: column;
-                    gap: 15px;
-                    font-size: 15px;
-                    text-align: justify;
-                    letter-spacing: 0.5px;
-                    line-height: 20px;
-
-                    li{
-                        font-size: 20px;
+                    gap: 20px;
+                    width: 100%;
+                    
+                    background: #fff;
+                    padding: 30px;
+                    border-radius: 10px;
+                    box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+                    
+                    .se-cntHeader{
+                        .s-title{
+                            font-size: 33px;
+                        }
+    
+                        .s-date{
+                            margin-left: 10px;
+                            margin-top: 5px;
+                            color: rgba(0, 0, 0, 0.5);
+                        }
                     }
-                    p{
+    
+    
+                    .ql-syntax{
+                        border-radius: 5px;
+                        padding: 10px;
+                        background: #ededeb;
+                        color: #00b300;
+                    }
+    
+    
+                
+                    .s-cntDescription{
+                        display: flex;
+                        flex-direction: column;
+                        gap: 15px;
                         font-size: 15px;
+                        text-align: justify;
+                        letter-spacing: 0.5px;
+                        line-height: 20px;
+    
+                        li{
+                            font-size: 20px;
+                        }
+                        p{
+                            font-size: 15px;
+                        }
+                    }
+        
+                    .s-cntTags{
+                        display: flex;
+                        gap: 15px;
+        
+                        .s-tag{
+                            background: #009f2b;
+                            border-radius: 3px;
+                            padding: 8px;
+                            color: #fff;
+                            font-weight: 300;
+                            cursor: default;
+                        }
                     }
                 }
-    
-                .s-cntTags{
-                    display: flex;
-                    gap: 15px;
-    
-                    .s-tag{
-                        background: #009f2b;
-                        border-radius: 3px;
-                        padding: 8px;
-                        color: #fff;
-                        font-weight: 300;
-                        cursor: default;
-                    }
-                }
-            }
 
-            .s-cnt-form{
-                // width: 70%;
-                height: 100%;
-                position: relative;
-                overflow: hidden;
-                width: 0;
-                transition: 1s;
-                margin-left: 30px;
-
-                &.max-width{
-                    z-index: 2;
-                    width: 73%;
+                .s-cnt-form{
+                    // width: 70%;
+                    height: 100%;
+                    position: relative;
+                    overflow: hidden;
+                    width: 0;
                     transition: 1s;
+                    margin-left: 30px;
+    
+                    &.max-width{
+                        z-index: 2;
+                        width: 73%;
+                        transition: 1s;
+                    }
+    
+    
+                    .s-fixed{
+                        transition: 1s;
+                        position: fixed;
+                    }
+    
                 }
             }
+
+            .cnt-response{
+              width: 97.5%;
+              background: rgba(255, 255, 255, 0.9);
+              border-radius: 10px;
+              padding: 30px;  
+              transition: 1s;
+
+              &.max-width{
+                width: 57.5%;
+                transition: 1s;
+              }
+
+              &.displayBlock{
+                display: none;
+              }
+
+              .r-titleAnswer{
+                font-size: 30px;
+                color: #162B4E;
+                margin-bottom: 20px;
+              }
+
+              .r-cntBlock{
+                display: flex;
+                flex-direction: column;
+                gap: 50px;
+                background: transparent;
+
+                  .r-block{
+                    display: flex;
+                    flex-direction: column;
+                    padding: 20px;
+                   background: #fff;
+                    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+                    border-radius: 5px;
+    
+                      .r-cntCode{
+                        display: flex;
+                        flex-direction: column;
+                        gap: 10px;
+        
+                        li{
+                            font-size: 20px;
+                        }
+                        p{
+                            font-size: 15px;
+                        }
+        
+                          .ql-syntax{
+                            border-radius: 5px;
+                            padding: 10px;
+                            background: #ededeb;
+                            color: #b34800;
+                          }
+                      }
+    
+                      .r-dateP{
+                        font-size: 13px;
+                        color: rgba(0, 0, 0, 0.5);
+                        text-align: right;
+                        margin-top: 5px;
+                      }
+                  }
+              }
+
+
+
+
+            }
+
+
         }
         
 
